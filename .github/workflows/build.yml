@@ -26,7 +26,10 @@ jobs:
           libsdl2-mixer-dev libsdl2-ttf-dev
 
     - name: Install Buildozer and Cython
-      run: pip3 install buildozer==1.5.0 cython==0.29.37
+      run: pip3 install buildozer cython==0.29.37
+
+    - name: Clear Buildozer Cache
+      run: rm -rf ~/.buildozer
 
     - name: Build APK
       run: buildozer android debug
