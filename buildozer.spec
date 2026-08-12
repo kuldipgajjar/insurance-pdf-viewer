@@ -6,7 +6,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
 source.exclude_dirs = tests, bin, .buildozer, __pycache__
 version = 1.0
-requirements = python3,kivy==2.3.0,pdfplumber,pdfminer.six,Pillow,pycryptodome,plyer,charset-normalizer,chardet,cryptography
+requirements = python3,kivy==3.0.0,pdfplumber,pdfminer.six,Pillow,pycryptodome,plyer,charset-normalizer,chardet,cryptography
 orientation = portrait
 fullscreen = 0
 android.permissions = READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE, INTERNET
