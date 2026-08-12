@@ -31,15 +31,11 @@ jobs:
     - name: clear buildozer cache
       run: rm -rf ~/.buildozer
 
-    - name: pre-download android sdk/ndk
-      run: |
-        mkdir -p ~/.buildozer/android/platform
-        # allow buildozer to download and cache dependencies
-        buildozer android debug 2>&1 | head -100 || true
-
     - name: build apk
-      run: buildozer android debug
-      continue-on-error: false
+      run: |
+        export PYTHONPATH=/usr/lib/python3.10:$PYTHONPATH
+        buildozer android debug
+      timeout-minutes: 60
 
     - name: upload apk
       uses: actions/upload-artifact@v4
