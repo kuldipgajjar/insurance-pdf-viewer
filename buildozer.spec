@@ -17,7 +17,7 @@ android.accept_sdk_license = True
 android.archs = arm64-v8a
 android.release_artifact = apk
 android.debug_artifact = apk
-p4a.python_recipe = python3.11
+p4a.python_recipe = python3.12
 
 [buildozer]
 log_level = 2
