@@ -1,4 +1,4 @@
-name: Build Insurance PDF APK
+name: build insurance pdf apk
 
 on:
   push:
@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout code
+    - name: checkout code
       uses: actions/checkout@v4
 
-    - name: Install system dependencies
+    - name: install system dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y \
@@ -25,18 +25,25 @@ jobs:
           libsdl2-dev libsdl2-image-dev \
           libsdl2-mixer-dev libsdl2-ttf-dev
 
-    - name: Install Buildozer and Cython
-      run: pip3 install buildozer cython==0.29.37
+    - name: install buildozer and cython
+      run: pip3 install --upgrade buildozer cython==0.29.37
 
-    - name: Clear Buildozer Cache
+    - name: clear buildozer cache
       run: rm -rf ~/.buildozer
 
-    - name: Build APK
-      run: buildozer android debug
+    - name: pre-download android sdk/ndk
+      run: |
+        mkdir -p ~/.buildozer/android/platform
+        # allow buildozer to download and cache dependencies
+        buildozer android debug 2>&1 | head -100 || true
 
-    - name: Upload APK
+    - name: build apk
+      run: buildozer android debug
+      continue-on-error: false
+
+    - name: upload apk
       uses: actions/upload-artifact@v4
       with:
-        name: InsurancePDFViewer-APK
+        name: insurancepdfviewer-apk
         path: bin/*.apk
         retention-days: 30
