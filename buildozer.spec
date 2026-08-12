@@ -10,14 +10,14 @@ requirements = python3,kivy==3.0.0,pdfplumber,pdfminer.six,Pillow,pycryptodome,p
 orientation = portrait
 fullscreen = 0
 android.permissions = READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE, INTERNET
-android.api = 34
+android.api = 33
 android.minapi = 21
-android.ndk = 27c
+android.ndk = 25c
 android.accept_sdk_license = True
 android.archs = arm64-v8a
 android.release_artifact = apk
 android.debug_artifact = apk
-p4a.python_recipe = python3.12
+p4a.python_recipe = python3.11
 
 [buildozer]
 log_level = 2
